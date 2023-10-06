@@ -9,7 +9,7 @@ def read_qr_code(image_bytes):
     # Read the image from the uploaded file
     image_np = np.frombuffer(image_bytes, np.uint8)
     img = cv2.imdecode(image_np, cv2.COLOR_BGR2RGB)
-    detector = QReader()
+    detector = QReader(model_size='l')
 
     # Decode QR codes from the image
 
