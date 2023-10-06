@@ -12,6 +12,7 @@ uvicorn = "*"
 pydantic = "*"
 python-multipart = "*"
 qreader = "*"
+torch = "*"
 
 [dev-packages]
 ipykernel = "*"
