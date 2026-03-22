@@ -21,15 +21,13 @@ FROM base AS python-deps
 COPY Pipfile .
 COPY Pipfile.lock .
 RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
+ENV PATH="/.venv/bin:$PATH"
 
 # download model and run test
 COPY demo.png .
 COPY download.py .
 RUN --mount=type=cache,target=/root/.cache/huggingface \
   python download.py
-
-ENV PATH="/.venv/bin:$PATH"
-RUN python download.py
 
 FROM base AS runtime
 # Copy virtual env from python-deps stage
