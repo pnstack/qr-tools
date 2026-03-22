@@ -24,9 +24,10 @@ RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 
 # download model and run test
 COPY demo.png .
+COPY download.py .
 RUN --mount=type=cache,target=/root/.cache/huggingface \
   python download.py
-  
+
 ENV PATH="/.venv/bin:$PATH"
 RUN python download.py
 
